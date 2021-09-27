@@ -1,0 +1,28 @@
+{
+  "name": "be-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giornn0/VanillaNodeJS.git"
+  },
+  "author": "giornn0",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/giornn0/VanillaNodeJS/issues"
+  },
+  "homepage": "https://github.com/giornn0/VanillaNodeJS#readme",
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.0"
+  }
+}
