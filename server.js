@@ -17,7 +17,7 @@ if(cluster.isPrimary){
     console.log(`Worker ${worker.process.pid} died`)
   })
 }else{
-  const app = http.createServer().listen(5000, () => {
+  const app = http.createServer().listen(process.env.PORT || 5000, () => {
       console.log(`Server running in port 5000`);
     });
     app.on('request',onRequest)
