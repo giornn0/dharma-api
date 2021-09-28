@@ -19,7 +19,7 @@ async function onRequest(req, res) {
     return res.end();
   }
   const request = new Request(req, res);
-  if (!request.route) return notFound(res);
+  if (!request.route && !request.dataRoute) return notFound(res);
   try {
     let body = undefined;
     if (request.relation === "images") {
@@ -30,12 +30,16 @@ async function onRequest(req, res) {
       body = await getData(req);
     }
 
+
     if (request.section === "login")
       return require("./app/routes/login.routes")(request, res, body);
 
     if (!request.authorization) return notAuthenticated(res);
-
-    return require("./app/routes/root.routes")(request, res, body);
+    
+    if(request.dataRoute) return require("./app/routes/data.routes")(request, res, body)
+    else {
+      return require("./app/routes/root.routes")(request, res, body);
+    }
   } catch (error) {
     return throwError(res, error);
   }

@@ -21,7 +21,7 @@ const rules = {
   cliente_id:[/^[0-9]{1,12}$/,true],
   vendedor_id:[/^[0-9]{1,12}$/,true],
   valor_mt2:[/^[0-9,.]{1,12}$/,true],
-  observaciones:[/^[a-zA-Z\s0-9-]{3,200}$/,true],
+  observaciones:[/^[a-zA-Z\s0-9-]{3,200}$/,false],
   tipo_construccion:[/^[a-zA-Z\s]{3,30}$/,true],
   tipologia:[/^[a-zA-Z\s]{3,30}$/,true],
   dormitorios:[/^[0-9,.]{1,12}$/,true],

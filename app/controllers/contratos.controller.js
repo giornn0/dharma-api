@@ -30,6 +30,7 @@ class ContratosController extends Controller {
 
   async store(contrato) {
     try {
+      console.log(contrato, !null)
       contrato.valor_mt2 = formatMoney(contrato.valor_mt2)
       contrato.mt2_cubiertos= formatMeasure(contrato.mt2_cubiertos,'mt²')
       contrato.mt2_semicubiertos= formatMeasure(contrato.mt2_semicubiertos,'mt²')
@@ -55,7 +56,7 @@ class ContratosController extends Controller {
       contrato.mt2_cubiertos= formatMeasure(contrato.mt2_cubiertos,'mt²')
       contrato.mt2_semicubiertos= formatMeasure(contrato.mt2_semicubiertos,'mt²')
       contrato.mt2_totales= formatMeasure(contrato.mt2_totales,'mt²')
-      if (this.validation(contrato)) {
+      if (this.validation(contrato,true)) {
           contrato.fecha_contrato= formatDate(contrato.fecha_contrato)
           return await this.patch(contrato,id,`${contrato.numero_contrato}`)
           

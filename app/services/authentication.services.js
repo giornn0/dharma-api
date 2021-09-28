@@ -43,7 +43,7 @@ async function refresh(token,res){
     try {
         const valid = jwt.verify(token,process.env.JWT_REF)
     } catch (error) {
-        return throwError(res, error)
+        return [false,3]
     }
     return [true] 
 }

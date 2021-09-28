@@ -3,11 +3,14 @@ const { throwError } = require("../../response");
 class Request {
   queryParamsRegex = /^(page=[0-9]+)?&?(take=[0-9]+)?&?(search=[a-zA-Z0-9]+)?&?(category_search=[a-zA-Z+]+)?$/
   routeRegex = /^\/(users|clientes|contratos|pagos|vendedores|login)\/?([0-9]+)?\/?(clientes|pagos|contratos|images)?$/
+  dataRouteRegex = /^\/(balance)\/?([0-9]+)?\/?(clientes|pagos|contratos|images)?$/
 
   constructor(req,res) {
     try {
       this.method = req.method;
       this.route = req.url.split('?')[0].match(this.routeRegex)
+
+      this.dataRoute = req.url.split('?')[0].match(this.dataRouteRegex)
   
       this.section = this.route?this.route[1]:undefined
         this.id = this.route?this.route[2]:undefined
@@ -19,6 +22,8 @@ class Request {
         this.search= this.queryParams && this.queryParams[3] ? this.queryParams[3].split('=')[1]+'' :undefined
         this.category_search=  this.queryParams && this.queryParams[4] ? this.queryParams[4]+'' :undefined
         this.authorization = req.headers.authorization && req.headers.authorization.split(' ').length>0 ? req.headers.authorization.split(' ')[1] : undefined
+
+        this.dataFirst= this.dataRoute?this.dataRoute[1]:undefined
 
     } catch (error) {
       throwError(res, error)      

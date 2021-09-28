@@ -1,4 +1,4 @@
-const { throwError, notAuthenticated } = require("../../response");
+const { throwError, notAuthenticated, response } = require("../../response");
 
 let Controller = null
 
@@ -12,6 +12,11 @@ module.exports = async (req, res, values) => {
         const {query} = require("../services/connection")
         await query(`DELETE FROM personal_access_tokens WHERE tokenable_id=?`,[validateUser[1]])
         return notAuthenticated(res)
+      }
+      if(validateUser[1]===3){
+        const {query} = require("../services/connection")
+        await query(`DELETE FROM personal_access_tokens WHERE tokenable_id=?`,[validateUser[1]])
+        return response(res,null,419,`Token Expirado. Revalide su sesion`)
       }
     }
     else{
