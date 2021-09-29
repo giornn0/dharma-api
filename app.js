@@ -6,6 +6,7 @@ const {
   notAuthenticated,
 } = require("./response");
 const { Request } = require("./app/models/request.model");
+const { startConnection } = require("./app/services/connection");
 
 async function onRequest(req, res) {
   if (
@@ -30,6 +31,7 @@ async function onRequest(req, res) {
       body = await getData(req);
     }
 
+    await startConnection()
 
     if (request.section === "login")
       return require("./app/routes/login.routes")(request, res, body);
