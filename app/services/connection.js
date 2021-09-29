@@ -6,7 +6,7 @@ const pool = mysql.createPool({
   host            : process.env.QOVERY_MYSQL_Z375F32C8_HOST,
   user            : process.env.QOVERY_MYSQL_Z375F32C8_LOGIN,
   password        : process.env.QOVERY_MYSQL_Z375F32C8_PASSWORD ,
-  database        :process.env.QOVERY_MYSQL_Z375F32C8_DEFAULT_DATABASE ,
+  database        :process.env.QOVERY_MYSQL_Z375F32C8_DATABASE ,
   port: process.env.QOVERY_MYSQL_Z375F32C8_PORT
 })
 
