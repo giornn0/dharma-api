@@ -2,13 +2,14 @@ const mysql = require("mysql2/promise");
 if(!process.env.PRODUCTION) dotenv = require('dotenv').config()
 
 const pool = mysql.createPool({
-  // connectionLimit : process.env.DB_CONLIMIT,
+  connectionLimit : process.env.DB_CONLIMIT,
   host            : process.env.QOVERY_MYSQL_Z375F32C8_HOST,
   user            : process.env.QOVERY_MYSQL_Z375F32C8_LOGIN,
   password        : process.env.QOVERY_MYSQL_Z375F32C8_PASSWORD ,
   database        :process.env.QOVERY_MYSQL_Z375F32C8_DATABASE ,
   port: process.env.QOVERY_MYSQL_Z375F32C8_PORT
 })
+
 
 
 
@@ -27,7 +28,7 @@ async function query(query, params) {
 
 function dropConnection() {
   console.log('dorpping connection')
-  pool.end()
+  connection.release();
 }
 
 module.exports = {
