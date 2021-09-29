@@ -1,7 +1,7 @@
 const http = require("http");
+const { onRequest } = require("./app");
 // const cluster = require('cluster')
 // const {cpus} = require('os')
-// const { onRequest } = require("./app");
 
 
 // console.log('SERVER DHARMA')
