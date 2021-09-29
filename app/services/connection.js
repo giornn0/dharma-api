@@ -29,7 +29,7 @@ async function query(query, params) {
 
 function dropConnection() {
   console.log('dorpping connection')
-  connection.destroy();
+  connection.release();
 }
 
 module.exports = {
