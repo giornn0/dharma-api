@@ -28,7 +28,7 @@ async function query(query, params) {
 
 function dropConnection() {
   console.log('dorpping connection')
-  connection.release();
+  pool.end()
 }
 
 module.exports = {
