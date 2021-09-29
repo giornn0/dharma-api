@@ -20,6 +20,7 @@ async function startConnection() {
     if (error) throw error;
     return connect;
   });
+
 }
 async function query(query, params) {
   const [results] = await connection.execute(query, params);
@@ -28,7 +29,7 @@ async function query(query, params) {
 
 function dropConnection() {
   console.log('dorpping connection')
-  pool.end()
+  connection.destroy();
 }
 
 module.exports = {
